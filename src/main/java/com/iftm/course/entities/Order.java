@@ -16,8 +16,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.iftm.course.entities.enums.OrderStatus;
 
 @Entity
@@ -28,8 +26,6 @@ public class Order implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
-	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT")
 	private Instant moment;
 	
 	private Integer orderStatus;
@@ -93,7 +89,6 @@ public class Order implements Serializable {
 		return items;
 	}
 
-	@JsonIgnore
 	public Payment getPayment() {
 		return payment;
 	}
